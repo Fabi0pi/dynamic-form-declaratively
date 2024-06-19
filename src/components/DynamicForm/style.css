@@ -1,0 +1,13 @@
+.form {
+    border-radius: 8px;
+    padding: 0.2rem;
+}
+
+.fieldsContainer {
+    gap: 6px;
+    width: 100%;
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

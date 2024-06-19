@@ -1,0 +1,195 @@
+{
+    "fields": [
+        {
+            "type": "text",
+            "label": "First Name",
+            "section": "User personal",
+            "name": "firstName",
+            "placeholder": "Your first name",
+            "rules": {
+                "required": true,
+                "message": "This field can't be empty"
+            }
+        },
+        {
+            "type": "text",
+            "label": "Last Name",
+            "name": "lastName",
+            "placeholder": "Your last name",
+            "rules": {
+                "required": true,
+                "message": "This field can't be empty"
+            }
+        },
+        {
+            "type": "date",
+            "name": "birthDate",
+            "label": "Date of Birth",
+            "placeholder": "Your date of birth"
+        },
+        {
+            "type": "number",
+            "label": "Phone Number",
+            "name": "phoneNumber",
+            "placeholder": "Your phone number",
+            "rules": {
+                "required": true,
+                "message": "This field can't be empty"
+            }
+        },
+        {
+            "type": "text",
+            "name": "email",
+            "label": "Email",
+            "placeholder": "Your email",
+            "rules": {
+                "regex": true,
+                "required": true,
+                "message" : "This field can't be empty",
+                "regexInvalidMsg" : "Insert a valid email"
+            }
+        },
+        {
+            "type": "nested",
+            "name": "address",
+            "fields": [
+                {
+                    "section": "Address",
+                    "type": "text",
+                    "label": "Street Address",
+                    "name": "streetAddress",
+                    "placeholder": "Your street address",
+                    "rules": {
+                        "required": true,
+                        "message": "This field can't be empty"
+                    }
+                },
+                {
+                    "type": "text",
+                    "label": "City",
+                    "name": "city",
+                    "placeholder": "Your city",
+                    "rules": {
+                        "required": true,
+                        "message": "This field can't be empty"
+                    }
+                },
+                {
+                    "type": "text",
+                    "label": "State",
+                    "name": "state",
+                    "placeholder": "Your state",
+                    "rules": {
+                        "required": true,
+                        "message": "This field can't be empty"
+                    }
+                },
+                {
+                    "type": "text",
+                    "label": "Postal Code",
+                    "name": "postalCode",
+                    "placeholder": "Your postal code",
+                    "rules": {
+                        "required": true,
+                        "message": "This field can't be empty"
+                    }
+                },
+                {
+                    "type": "switch",
+                    "name": "something",
+                    "label": "Something"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "label": "Country",
+            "name": "country",
+            "rules": {
+                "required": true,
+                "message": "This field can't be empty"
+            },
+            "options": [
+                {
+                    "value": "US",
+                    "label": "United States"
+                },
+                {
+                    "value": "CA",
+                    "label": "Canada"
+                },
+                {
+                    "value": "MX",
+                    "label": "Mexico"
+                }
+            ]
+        },
+        {
+            "type": "radio",
+            "label": "Gender",
+            "name": "gender",
+            "rules": {
+                "required": true,
+                "message": "This field can't be empty"
+            },
+            "options": [
+                {
+                    "value": "male",
+                    "label": "Male"
+                },
+                {
+                    "value": "female",
+                    "label": "Female"
+                },
+                {
+                    "value": "other",
+                    "label": "Other"
+                }
+            ]
+        },
+        {
+            "type": "nested",
+            "fields": [
+                {
+                    "section": "Privacy",
+                    "type": "checkbox",
+                    "label": "Accept Terms and Conditions",
+                    "name": "termsAndCondition",
+                    "rules": {
+                        "required": true,
+                        "message": "This field can't be empty"
+                    },
+                    "defaultChecked": true
+                },
+                {
+                    "type": "checkbox",
+                    "label": "Subscribe to Newsletter",
+                    "name": "newsletterSubscription"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "label": "Preferred Contact Method",
+            "name": "prefMethod",
+            "rules": {
+                "required": true,
+                "message": "This field can't be empty"
+            },
+            "options": [
+                {
+                    "value": "email",
+                    "label": "Email"
+                },
+                {
+                    "value": "phone",
+                    "label": "Phone"
+                },
+                {
+                    "value": "sms",
+                    "label": "SMS"
+                }
+            ]
+        }
+    ]
+}
