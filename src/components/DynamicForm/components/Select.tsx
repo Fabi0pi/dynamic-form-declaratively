@@ -28,6 +28,7 @@ export const Select = memo(({ label, options, rules, error, name, value }: Props
     <FormControl fullWidth>
       <InputLabel id="demo-simple-select-required-label" style={{ color: "#676262F" }}>{label}</InputLabel>
       <MuiSelect
+        defaultValue=""
         name={name}
         labelId="demo-simple-select-required-label"
         id="demo-simple-select-required"

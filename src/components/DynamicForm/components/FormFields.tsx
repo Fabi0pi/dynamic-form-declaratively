@@ -3,6 +3,7 @@ import { Typography } from "@mui/material"
 import { FieldType } from "../utils/componentFieldsMap"
 import { Field, FormDataError } from "../utils/types"
 import { memo, useCallback } from "react"
+import { useDrag } from "react-dnd"
 
 type Props = {
     fields: Field[]
@@ -12,6 +13,18 @@ type Props = {
 }
 
 export const FormFields = memo(({ fields, data, error, getComponents }: Props) => {
+    const [{ isDragging }, drag] = useDrag(() => ({
+        type: 'item',
+        item: "",
+        collect: (monitor) => {
+            console.log(monitor);
+            return ({
+                isDragging: monitor.isDragging(),
+            })
+        },
+    })
+    );
+    console.log("🚀 ~ const[{isDragging},drag]=useDrag ~ isDragging:", isDragging)
 
     const renderFields = useCallback((fields: Field[], data: Record<string, any>, error: FormDataError) => {
         return fields.map((el: Field) => {
@@ -22,13 +35,13 @@ export const FormFields = memo(({ fields, data, error, getComponents }: Props) =
             if (!Component) return
 
             return (
-                <div id={el.name} className='fieldsContainer' key={el.name + el.label + el.type}>
+                <div ref={drag} id={el.name} className='fieldsContainer' key={el.name + el.label + el.type}>
                     <Typography color={"black"}>{el.section}</Typography>
                     <Component {...el} error={error} value={data[el.name]} />
                 </div>
             )
         })
-    }, [getComponents])
+    }, [getComponents, drag])
 
     return <> {renderFields(fields, data, error)} </>
 })

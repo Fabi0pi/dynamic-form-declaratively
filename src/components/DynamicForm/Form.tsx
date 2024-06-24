@@ -6,13 +6,23 @@ import { formDataActions } from '../../feature/reducer'
 import { FormDataError, JSONFormData, Data } from './utils/types'
 import { FieldType, getComponentByType } from './utils/componentFieldsMap'
 import { FormFields } from './components/FormFields'
+import { useDrop } from 'react-dnd'
 
 type Props = {
   jsonData: JSONFormData
   data: Partial<Data>
+  onDrop: (item: any) => void
 }
 
-export const Form = memo(({ jsonData, data }: Props) => {
+export const Form = memo(({ jsonData, data, onDrop }: Props) => {
+  const [{ isOver }, drop] = useDrop(() => ({
+    accept: 'item',
+    drop: (item) => onDrop(item),
+    collect: (monitor) => ({
+      isOver: monitor.isOver(),
+    }),
+  }));
+  console.log("🚀 ~ const[{isOver},drop]=useDrop ~ isOver:", isOver)
   const [errors, setErrors] = useState({})
   const dispatcht = useDispatch()
   const { fields } = jsonData
@@ -41,7 +51,7 @@ export const Form = memo(({ jsonData, data }: Props) => {
   }, [dispatcht, data])
 
   return (
-    <div className='form'>
+    <div className='form' ref={drop}>
       <FormFields fields={fields} data={data} error={errors} getComponents={handleGetComponents} />
       <button type='submit' onClick={handleSumbit}>Submit</button>
     </div>
